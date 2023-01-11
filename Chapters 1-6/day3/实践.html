@@ -1,0 +1,131 @@
+<script>
+    var a = 'hello', b = 1;
+    let c = 'world';
+    const d = 'hi'; //必须初始化
+</script>
+
+<script>
+    var a = 'world'; //与之前的声明合并
+    b = 'world'; //合法，但是不推荐这么做
+    // let c = 1; //报错:重复声明
+    // const d = 'hi'; //报错:const也不能重复声明
+    console.log(c);
+  
+    for(let i = 1; i <= 3; ++i)
+    {
+      console.log(i) //对每次迭代，i是新拷贝的独立副本
+    }
+  
+    let name;
+    console.log(typeof name);
+    console.log(name == undefined) //true
+    name = 'blover';
+    console.log(typeof name);
+  
+    console.log("part1------------------------");
+  
+    console.log(Boolean(1/0)); //1/0得infinity，转布尔值得true
+  
+    console.log(Number(".1")); //得0.1
+    console.log(Number(" 0x12")); //得16进制数(从第一个非空字符开始)
+    console.log(Number("0012a")); //得NaN
+    console.log(Number("")); //得0
+  
+    console.log(parseInt("  12ab")); //得12
+    console.log(parseInt("12abz",16)); //得0x12ab
+    console.log(parseInt("")); //得NaN
+    console.log(parseInt("1e2")); //得1
+  
+    console.log(parseFloat("1e2")); //得100。parseFloat的基数只能为10 
+    console.log(parseFloat(".1")); //得0.1
+    console.log(parseFloat("01.2.3")); //得1.2
+  
+    console.log("part2------------------------");
+  
+    let value = 5, und;
+  
+    console.log(value.toString());
+    console.log(value.toString(2));//数字类型的toString方法可指定基数
+    console.log(String(und)); //undefined和null无toString方法
+    
+    let s1 = '普通插值：' + 'value*value = ' + value*value + ' endl';
+    let s2 = `模板字面量插值：value*value = ${ value*value } endl`; //注意是反引号
+    let s3=`hello
+  world`; //含跨行的模板字符串(注意自动缩进的影响)
+    console.log(s1);
+    console.log(s2);
+    console.log('s1=s2 ? ———— ' + (s3 == 'hello\nworld')); //true
+  
+    console.log("part3------------------------");
+  
+    let sym1 = Symbol('This is description'),
+        sym2 = Symbol('This is description'); //sym1,sym2是不同的符号
+    console.log(sym1);
+    console.log(sym1 == sym2); //false
+  
+    sym3 = Symbol.for('foo'); //在全部符号注册表中创建键'foo'的实例
+    sym4 = Symbol.for('foo'); //查到实例，并引用
+    console.log(sym3 == sym4); //true
+    console.log(Symbol.keyFor(sym4)); //查找sym4的键
+    console.log(Symbol.keyFor(sym1)); //undefined。sym1不是全局符号
+    /*更多符号相关的内容，待未来复习*/
+  
+    console.log("part4------------------------");
+  
+    let v1 = true, v2 = "1"
+    console.log(++v1); //调用Number()转换作数字作自增操作，结果也将是数字
+    console.log(++v2); 
+  
+    let v3 = -16;
+    console.log((v3>>1).toString(2)); //算术右移(填充符号位)
+    console.log((v3>>>1).toString(2)); //逻辑右移(填充0)
+  
+    console.log(!""); //先转Boolean再取逻辑反，得true
+    console.log(null && undefined_variable); //不会报错，返回第一个操作数
+    console.log("hello" || undefined_variable); //不会报错，返回第一个操作数
+  
+    let inf = 1/0;
+    //涉及INF和NaN的操作，可先从逻辑上感性理解
+    console.log(inf % 10); //NaN
+    console.log(10 % inf); //10
+    console.log(true % "2"); //1
+    
+    let v4 = 16;
+    v4 **= 0.5
+    console.log("16 ** 0.5 = " + v4); //4
+  
+    console.log("5 + '2' is " + (5 + '2')); //"52"
+    console.log("5 - '2' is " + (5 - '2')); //3
+  
+    console.log('a' < 3); //'a'转数字后得NaN，与任何元素比较都得false
+    console.log('12' < '2'); //true。注意是按字典序/编码序
+    console.log('3' == 3); //true。你要习惯JavaScript的这种风格
+    console.log('3' === 3); //false。'3'和3在类型上不全等！
+  
+    console.log("part4------------------------");
+
+    let con = '123';
+    switch (true) { //如果case连接的是表达式，那么可以设switch参数为true来匹配判断成功的项
+        //case比较时，用的是全等运算符，因此123!=='123'
+        case 123: //123不会自己转换成true，所以这个case永远不会触发
+            console.log('This is 123');
+            break;
+        case con === '123':
+            console.log("This is '123'");
+            //break;
+        case con < '122': //前面没有break，下面将直接顺序执行，不会在乎条件
+            console.log(con + ' less than 122');
+            break;
+        default: break;
+    }
+
+    console.log(fun('hello ', 'world'));
+  
+    function fun(arg1, arg2){ //没有匹配到实参的形参，其值为undefined
+        return arg1 + arg2;
+    }
+
+    console.log(1 + undefined); //NaN
+    console.log('1' + undefined); //1undefined
+  
+</script>

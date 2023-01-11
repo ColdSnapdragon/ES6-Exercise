@@ -1,0 +1,21 @@
+<!DOCTYPE html> <!-- 文档类型声明：开启标准模式。在h5中可以仅写一个html-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 延迟执行：立即下载，待文档渲染（即渲染引擎加载标签）完后再执行；只对外部文件有效 -->
+    <script defer src="./example.js"></script>
+    <!-- 异步执行：不阻塞文档渲染，不保证次序 -->
+    <script async src="./example.js"></script>
+    <script async src="./example.js"></script>
+</head>
+<body> <!-- 从body的第一个标签开始渲染页面-->
+    <!-- 外部文件，此时行内代码不生效 -->
+    <script src="./example.js"></script>
+    <noscript>
+        <p>当浏览器不支持js或该功能被关闭时，此标签会生效</p>
+    </noscript>
+</body>
+</html>
