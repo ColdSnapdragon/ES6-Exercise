@@ -1,4 +1,4 @@
-# ES6-Exercise
+# ES6-Primer
 
  **Reference to : *Professional JavaScript for Web Developers***  （《JavaScript高级程序设计》）
  
